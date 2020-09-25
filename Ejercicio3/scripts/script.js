@@ -1,4 +1,4 @@
-//U1T2 - Cadenas - Salvador Muñoz Cordero
+//U1T3 - Comparación - Salvador Muñoz Cordero
 
 //Variables
 var operacion1 = 10 == 10;
