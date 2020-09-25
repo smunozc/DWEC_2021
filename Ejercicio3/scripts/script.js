@@ -12,11 +12,12 @@ var operacion8 = "123" === 123;
 var operacion9 = parseInt("123") === 123;
 
 //Mensajes mostrando el valor de las variables
-alert("La operación 10 == 10 es" + operacion1);
-alert("La operación 10 == 10 es" + operacion2);
-alert("La operación 10 == 10 es" + operacion3);
-alert("La operación 10 == 10 es" + operacion4);
-alert("La operación 10 == 10 es" + operacion6);
-alert("La operación 10 == 10 es" + operacion7);
-alert("La operación 10 == 10 es" + operacion8);
-alert("La operación 10 == 10 es" + operacion9);
+alert("La operación 10 == 10 es" + " " + operacion1);
+alert("La operación 10 === 10 es" + " " + operacion2);
+alert("La operación 10 === 10.0 es" + " " + operacion3);
+alert("La operación 'Laura' == 'laura' es" + " " + operacion4);
+alert("La operación 'Laura' > 'laura' es" + " " + operacion5);
+alert("La operación 'Laura' < 'laura' es" + " " + operacion6);
+alert("La operación '123' == 123 es" + " " + operacion7);
+alert("La operación '123' === 123 es" + " " + operacion8);
+alert("La operación arseInt('123') === 123 es" + " " + operacion8);
