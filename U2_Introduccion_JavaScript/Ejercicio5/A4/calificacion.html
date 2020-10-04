@@ -3,18 +3,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
-		<title>Actividad multiplos de 3</title>
+		<title>Actividad Switch Calificacion</title>
 		<script type="text/javascript">  
 		
 		function verCalificacion(nota){
 			nota = parseInt(nota);
-			//Al switch se le deben de poner breaks en cada caso.
+			
+			/**
+			 * Al switch se le deben poner breaks en cada caso para que una vez que haya ejecutado la instruccion 
+			 * del caso coincidente pueda terminar la ejecucion del switch, si no se ponen breaks, al terminar la ejecucion
+			 * de un caso, continuará con el siguiente.
+			 * Tampoco se pueden usar comparadores en los casos, por ello, he sustituido los casos que tendrán 
+			 * la misma salida por consola por una sucesion de casos sin break, para que cuando coincida con alguno de ellos 
+			 * ejecute la orden del ultimo caso antes del break.
+			*/
+
 			switch(nota){
-				case nota<5:
+				case 1:
+				case 2:
+				case 3:
+				case 4:
 					console.log('Suspenso');
 					break;
 				case 5:
-					break;
 				case 6:
 					console.log('Aprobado');
 					break;
@@ -22,7 +33,8 @@
 				case 8:
 					console.log('Notable');
 					break;
-				case nota>8:
+				case 9:
+				case 10:
 					console.log('Sobresaliente');
 					break;
 				default:
