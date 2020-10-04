@@ -3,28 +3,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
-		<title>Actividad calificación</title>
+		<title>Actividad multiplos de 3</title>
 		<script type="text/javascript">  
 		
-			function verCalificacion(nota){
-				nota = parseInt(nota);
-				switch(nota){
-					case nota<5:
-						console.log('Suspenso');
-					case 5:
-						console.log('Suficiente');
-					case 6:
-						console.log('Bien');
-					case 7:
-						console.log('Notable');
-					case 8:
-						console.log('Notable');
-					case nota>8:
-						console.log('Sobresaliente');
-					default:
-						console.log('Valor erroneo');
-				}
+		function verCalificacion(nota){
+			nota = parseInt(nota);
+			//Al switch se le deben de poner breaks en cada caso.
+			switch(nota){
+				case nota<5:
+					console.log('Suspenso');
+					break;
+				case 5:
+					break;
+				case 6:
+					console.log('Aprobado');
+					break;
+				case 7:
+				case 8:
+					console.log('Notable');
+					break;
+				case nota>8:
+					console.log('Sobresaliente');
+					break;
+				default:
+					console.log('Valor erroneo');
+					break;
 			}
+		}
 		</script> 
 	</head>
 	<body>

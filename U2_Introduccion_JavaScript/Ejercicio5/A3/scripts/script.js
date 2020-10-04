@@ -1,18 +1,27 @@
 var x = 1;
-var multiplos3 = 0;
+var multiplos3 = [];
 var noPrimos = 0;
 
 while(x<500){
-    if(x%3 === 0 || x%2 === 0){
-        if(x%3 === 0){
-            multiplos3++;
-        }
-        //El calculo de los no primos es erróneo
-        if(x%2 === 0){
-            noPrimos++;
-        }
+    if(x%3 === 0){
+        multiplos3.push(x);
+    }
+    if (!primo(x)) {
+        noPrimos++;
     }
     x++;
 }
-console.log("Cantidad de numeros multiplos de 3: " + multiplos3 + '\n' + "Cantidad de numeros no primos: " + noPrimos);
+console.log("Numeros multiplos de 3: " + multiplos3 + '\n' + "Cantidad de numeros no primos: " + noPrimos);
 
+function primo(x) {
+    for (var i = 2; i < x; i++) {
+        if (x % i === 0) {
+            return false;
+        }
+    }
+    if(x !== 1){
+        return true;
+    } else {
+        return false;
+    }
+}
