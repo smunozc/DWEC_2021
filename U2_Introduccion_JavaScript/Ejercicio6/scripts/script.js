@@ -29,25 +29,31 @@ function game(){
         if(chosenNumber !== null){
             chosenNumber *= 1;
 
-            if(chosenNumber === randomNumber){
-                alert("Congrats, you won the game." + '\n' + "Number of attempts: " + attempts);
-                playAgain = confirm("Do you want to play again?");
+            if(!isNaN(chosenNumber)){
 
-                if(playAgain){
-                    chosenNumber = 0;
-                    randomNumber = getRandom(min,max);
-                    attempts = 0;
+                if(chosenNumber === randomNumber){
+                    alert("Congrats, you won the game." + '\n' + "Number of attempts: " + attempts);
+                    playAgain = confirm("Do you want to play again?");
+    
+                    if(playAgain){
+                        chosenNumber = 0;
+                        randomNumber = getRandom(min,max);
+                        attempts = 0;
+                    } else {
+                        break;
+                    }
+    
                 } else {
-                    break;
+                    alert("That's the wrong number, woooo.");
+                    if(chosenNumber > randomNumber){
+                        alert("The random number is smaller than the chosen number");
+                    } else {
+                        alert("The random number is bigger than the chosen number");
+                    }
                 }
 
             } else {
-                alert("That's the wrong number, woooo.");
-                if(chosenNumber > randomNumber){
-                    alert("The random number is smaller than the chosen number");
-                } else {
-                    alert("The random number is bigger than the chosen number");
-                }
+                alert("Debes introducir un número.");
             }
 
         } else {
