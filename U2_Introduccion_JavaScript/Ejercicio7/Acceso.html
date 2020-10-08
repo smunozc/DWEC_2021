@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+    <style>
+        main{
+            width: 100%;
+        }
+        form{
+            display: flex;
+            width: 50%;
+        }
+        form label{
+            margin-right: 10px;
+        }
+        #dni{
+            margin-right: 10px;
+        }
+        #letra{
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <p>Identificación mediante el NIF:</p>
+        <form>
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="fname">
+            <select name="Letra" id="letra">
+                <option selected>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
+                <option>E</option>
+                <option>F</option>
+                <option>G</option>
+                <option>H</option>
+                <option>I</option>
+                <option>J</option>
+                <option>K</option>
+                <option>L</option>
+                <option>M</option>
+                <option>N</option>
+                <option>Ñ</option>
+                <option>O</option>
+                <option>P</option>
+                <option>Q</option>
+                <option>R</option>
+                <option>S</option>
+                <option>T</option>
+                <option>U</option>
+                <option>V</option>
+                <option>W</option>
+                <option>X</option>
+                <option>Y</option>
+                <option>Z</option>
+            </select>
+            <input type="submit" value="enviar" onclick="getDni()">
+        </form>
+    </main>
+    <script src="./scripts/validacion.js"></script>
+</body>
+
+</html>
