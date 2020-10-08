@@ -53,7 +53,7 @@ function game(){
                 }
 
             } else {
-                alert("Debes introducir un número.");
+                alert("You must enter a number.");
             }
 
         } else {
