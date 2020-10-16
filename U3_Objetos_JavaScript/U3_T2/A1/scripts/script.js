@@ -1,6 +1,6 @@
 //Terminar ejercicio
-function mathFormats() {
-    let formatType = parseInt(document.getElementById("format").value);
+function mathOperations() {
+    let formatType = parseInt(document.getElementById("options").value);
 
     switch (formatType) {
         case 1:
@@ -18,7 +18,8 @@ function mathFormats() {
             break;
         case 3:
             let redondeo = parseFloat(prompt("Introduce un número decimal para redondearlo."));
-            alert("Redondeo a la alta: " + Math.ceil(redondeo) + '\n' + "Redondeo a la baja: " + Math.floor(redondeo));
+            alert("A la alta: " + Math.ceil(redondeo) + '\n' + "A la baja: " + Math.floor(redondeo) + '\n' + 
+            "Redondeo al más próximo: " + Math.round(redondeo));
             break;
         case 4:
             let angulo = parseInt(prompt("Introduce un ángulo entre 0 y 360."));

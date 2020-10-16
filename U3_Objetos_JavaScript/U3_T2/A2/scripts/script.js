@@ -1,6 +1,6 @@
 //Terminar ejercicio
-function mathFormats() {
-    let formatType = parseInt(document.getElementById("format").value);
+function mathOperations() {
+    let formatType = parseInt(document.getElementById("radius").value);
 
     switch (formatType) {
         case 1:
