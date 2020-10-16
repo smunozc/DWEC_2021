@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fecha en distintos formatos</title>
+    <style>
+        #enviar {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label for="date">Set a Date</label>
+        <input type="date" name="date" id="dt">
+        <br>
+
+        <p>Format:</p>
+
+        <label for="format1">1. 15/10/2020</label>
+        <br>
+        <label for="format2">2. Jueves, 15 de octubre de 2020</label>
+        <br>
+        <label for="format3">3. Thursday, October 15, 2020</label>
+        <br>
+        <input type="number" name="format" id="format" min="1" max="3">
+        <br>
+        <input type="button" value="Send" id="send" onclick="dateFormats()">
+    </form>
+    <script src="./scripts/script.js"></script>
+</body>
+
+</html>
