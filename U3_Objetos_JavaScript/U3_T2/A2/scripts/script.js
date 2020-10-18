@@ -9,9 +9,9 @@ function mathOperations() {
 
     alert("Resultados: " + '\n' +
     "radio: " + radio + '\n' +
-    "diametro: " + diametro + '\n' +
-    "perimetro: " + perimetro + '\n' +
-    "area circunferencia: " + areaCircunferencia + '\n' +
-    "area esfera: " + areaEsfera + '\n' +
-    "volumen esfera: " + volumenEsfera);
+    "diametro: " + diametro.toFixed(2) + '\n' +
+    "perimetro: " + perimetro.toFixed(2) + '\n' +
+    "area circunferencia: " + areaCircunferencia.toFixed(2) + '\n' +
+    "area esfera: " + areaEsfera.toFixed(2) + '\n' +
+    "volumen esfera: " + volumenEsfera.toFixed(2));
 }
