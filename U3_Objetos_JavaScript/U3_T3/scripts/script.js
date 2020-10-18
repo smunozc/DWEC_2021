@@ -1,6 +1,6 @@
 function numero() {
 
-    let num = parseInt(document.getElementById("num").value);
+    let num = document.getElementById("num").value * 1;
 
     if (num != null) {
 
@@ -14,17 +14,21 @@ function numero() {
 
                 console.log("Es entero");
 
-                let cuatroDecimales = Number(num).toFixed(4);;
+                let exponencial = Number(num).toExponential();
+                let cuatroDecimales = Number(num).toFixed(4);
                 let binario = Number(num).toString(2);
                 let octal = Number(num).toString(8);
                 let hexadecimal = Number(num).toString(16);
 
                 alert("Resultado: " + '\n' +
+                    "Valor exponencial: " + exponencial + '\n' +
                     "Cuatro decimales: " + cuatroDecimales + '\n' +
                     "Binario: " + binario + '\n' +
                     "Octal: " + octal + '\n' +
                     "Hexadecimal: " + hexadecimal);
 
+            } else {
+                alert("Debe introducir un número entero.")
             }
         }
     }
