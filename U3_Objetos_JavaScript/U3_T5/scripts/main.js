@@ -19,7 +19,7 @@ function cerrarVentana() {
             alert("La ventana ya esta cerrada.");
         }
     } else {
-        alert("Primero debes crear una ventana");
+        alert("Primero debes crear una ventana.");
     }
 }
 
