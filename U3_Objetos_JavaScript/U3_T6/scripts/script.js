@@ -188,16 +188,24 @@ function deleteEnd(array) {
 
 function mostrarElemento(array, posicion) {
     let position = posicion - 1;
-    let elemento = array.slice(position, position);
-
-    alert("Elemento en la posicion " + posicion + ": " + '\n' +
-        elemento);
+    let elemento = "";
+    if(position >= 0 && position < array.length){
+        for(i=0;i<array.length;i++){
+            if(i === position){
+                elemento = array[i];
+            }
+        }
+        alert("Elemento en la posicion " + posicion + ": " + '\n' +
+            elemento);
+    } else {
+        alert("La posicion indicada se sale del array.")
+    }
 }
 
-function mostrarPosicion(array, elemento) {
+function mostrarPosicion(array, element) {
     for (i = 0; i < array.length; i++) {
-        if (array[i] === elemento) {
-            alert("La posición de " + elemento + " en el array es: " + array[i]);
+        if (array[i] == element) {
+            alert("La posición de " + element + " en el array es: " + (i + 1));
         }
     }
 }
@@ -205,7 +213,7 @@ function mostrarPosicion(array, elemento) {
 function mostrarIntervalo(array, inicio, fin) {
     let start = inicio - 1;
     let end = fin - 1;
-    if(start >= 0 && end <= array.length - 1){
+    if(start >= 0 && end < array.length){
         let cadena = "Elementos del intervalo: " + '\n';
         for (start; start <= end; start++) {
             cadena += (start + 1) + ": " + array[start] + '\n';
