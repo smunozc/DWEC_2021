@@ -50,12 +50,12 @@ do {
                     "2. Añadir al final") * 1;
                 switch (opcion4) {
                     case 1:
-                        let elemento = prompt("Introduce el país que desea introducir al principio.");
-                        addFirst(paises, elemento);
+                        let addPrincipio = prompt("Introduce el país que desea introducir al principio.");
+                        addFirst(paises, addPrincipio);
                         break;
                     case 2:
-                        let elemento = prompt("Introduce el país que desea introducir al final.");
-                        addEnd(paises, elemento);
+                        let addFinal = prompt("Introduce el país que desea introducir al final.");
+                        addEnd(paises, addFinal);
                         break;
                     default:
                         alert("Debe introducir un número de los que se indican.");
@@ -88,8 +88,8 @@ do {
                         mostrarElemento(paises, posicion);
                         break;
                     case 2:
-                        let elemento = prompt("Introduce el país del que desee saber su posición: ");
-                        mostrarPosicion(paises, elemento);
+                        let pais = prompt("Introduce el país del que desee saber su posición: ");
+                        mostrarPosicion(paises, pais);
                         break;
                     default:
                         alert("Debe introducir un número de los que se indican.");
@@ -195,8 +195,8 @@ function mostrarElemento(array, posicion) {
 }
 
 function mostrarPosicion(array, elemento) {
-    for(i=0;i<array.length;i++){
-        if(array[i] === elemento){
+    for (i = 0; i < array.length; i++) {
+        if (array[i] === elemento) {
             alert("La posición de " + elemento + " en el array es: " + array[i]);
         }
     }
@@ -205,12 +205,13 @@ function mostrarPosicion(array, elemento) {
 function mostrarIntervalo(array, inicio, fin) {
     let start = inicio - 1;
     let end = fin - 1;
-    let resultado = [];
-    resultado = array.slice(start, end);
-
-    let cadena = "Elementos del intervalo: " + '\n';
-    for (i = 0; i < array.length; i++) {
-        cadena += (i + 1) + ": " + resultado[i] + '\n';
+    if(start >= 0 && end <= array.length - 1){
+        let cadena = "Elementos del intervalo: " + '\n';
+        for (start; start <= end; start++) {
+            cadena += (start + 1) + ": " + array[start] + '\n';
+        }
+        alert(cadena);
+    } else {
+        alert("El intervalo se sale del numero de elementos del array.");
     }
-    alert(cadena);
 }
