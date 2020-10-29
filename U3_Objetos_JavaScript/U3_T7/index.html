@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U3 T7</title>
+    <script src="./scripts/script.js"></script>
+</head>
+
+<body>
+    <main>
+        <form>
+            <select name="type" id="typeSelection" onchange="selector()">
+                <option value="IMC">IMC</option>
+                <option value="FCM">FCM</option>
+            </select>
+
+            <select name="gender" id="genderSelection" onchange="selector()">
+                <option value="Male">Hombre</option>
+                <option value="Female">Mujer</option>
+            </select>
+
+            <label for="input1" id="label1"></label>
+            <input type="text" id="input1">
+
+            <label for="input2" id="label2"></label>
+            <input type="text" id="input2">
+
+            <input type="button" id="imcBtn" value="Calcular IMC" onclick="calculoImc()">
+            <input type="button" id="fcmBtn" value="Calcular FCM" onclick="calculoFcm()">
+
+            <span id="result"></span>
+        </form>
+    </main>
+</body>
+
+</html>
