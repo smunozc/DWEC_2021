@@ -18,7 +18,7 @@ do {
                 numElementos(paises);
                 break;
             case 2:
-                opcion2 = prompt("Elige una opción: " + '\n' +
+                let opcion2 = prompt("Elige una opción: " + '\n' +
                     "1. Orden del array" + '\n' +
                     "2. Orden inverso" + '\n' +
                     "3. Orden Alfabético") * 1;
@@ -38,14 +38,14 @@ do {
                 }
                 break;
             case 3:
-                opcion3 = prompt("Introduce el intervalo en formato inicio-fin");
+                let opcion3 = prompt("Introduce el intervalo en formato inicio-fin");
                 let array = opcion3.split("-");
                 let inicio = array[0];
                 let fin = array[1];
                 mostrarIntervalo(paises, inicio, fin);
                 break;
             case 4:
-                opcion4 = prompt("Elige una opción: " + '\n' +
+                let opcion4 = prompt("Elige una opción: " + '\n' +
                     "1. Añadir al principio" + '\n' +
                     "2. Añadir al final") * 1;
                 switch (opcion4) {
@@ -63,7 +63,7 @@ do {
                 }
                 break;
             case 5:
-                opcion5 = prompt("Elige una opción: " + '\n' +
+                let opcion5 = prompt("Elige una opción: " + '\n' +
                     "1. Eliminar al principio" + '\n' +
                     "2. Eliminar al final") * 1;
                 switch (opcion5) {
@@ -79,7 +79,7 @@ do {
                 }
                 break;
             case 6:
-                opcion6 = prompt("Elige una opción: " + '\n' +
+                let opcion6 = prompt("Elige una opción: " + '\n' +
                     "1. Consultar por posicion" + '\n' +
                     "2. Consultar por nombre") * 1;
                 switch (opcion6) {
