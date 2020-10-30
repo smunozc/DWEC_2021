@@ -29,7 +29,7 @@ function Disco() {
         let resul = "Nombre del disco: " + this.nombre + "\n Autor: " + this.autor +
             "\n Año de publicación: " + this.anyoPublicacion + "\n Genero: " + this.tipoMusica +
             "\n Numero de estanteria: " + this.localizacion + "\n Es prestado: " + this.prestado;
-        
+
         return resul;
     }
 }
@@ -80,7 +80,7 @@ do {
                 }
                 break;
             case 3:
-                if(hayElementos(discos)){
+                if (hayElementos(discos)) {
                     let opcion3 = prompt("Introduce el intervalo en formato inicio-fin");
                     let array = opcion3.split("-");
                     let inicio = array[0];
@@ -92,23 +92,23 @@ do {
                 addNew(discos);
                 break;
             case 5:
-                if(hayElementos(discos)){
+                if (hayElementos(discos)) {
                     deleteElement(discos);
                 }
                 break;
             case 6:
-                if(hayElementos(discos)){
+                if (hayElementos(discos)) {
                     let opcion6 = prompt("Elige una opción: " + '\n' +
-                    "1. Consultar por posicion" + '\n' +
-                    "2. Consultar por nombre") * 1;
+                        "1. Consultar por posicion" + '\n' +
+                        "2. Consultar por nombre") * 1;
                     switch (opcion6) {
                         case 1:
                             let posicion = prompt("Introduce la posicion del elemento a consultar: ") * 1;
                             mostrarElemento(discos, posicion);
                             break;
                         case 2:
-                            let pais = prompt("Introduce el disco del que desee saber su posición: ");
-                            mostrarPosicion(discos, pais);
+                            let nombreDisco = prompt("Introduce el disco del que desee saber su posición: ");
+                            mostrarPosicion(discos, nombreDisco);
                             break;
                         default:
                             alert("Debe introducir un número de los que se indican.");
@@ -184,9 +184,9 @@ function mostrarOrdenadoAlfabeticamente(array) {
 
     //Meter objetos ordenados en nuevo array
     while (contador < array.length) {
-        for(i=0;i<array.length;i++){
+        for (i = 0; i < array.length; i++) {
             disco = array[i];
-            if(disco.nombre === arrayAlfabetico[contador]){
+            if (disco.nombre === arrayAlfabetico[contador]) {
                 arrayFinal[contador] = disco;
                 contador++;
             }
@@ -194,7 +194,7 @@ function mostrarOrdenadoAlfabeticamente(array) {
     }
 
     //Mostrar array ordenado alfabéticamente
-    for(i=0;i<arrayFinal.length;i++){
+    for (i = 0; i < arrayFinal.length; i++) {
         disco = arrayFinal[i];
         cadena += (i + 1) + ": " + '\n' + disco.mostrarDisco() + '\n';
     }
@@ -208,7 +208,7 @@ function addNew(array) {
     let generoDisco = prompt("Introduce el género del disco.");
     let localizacionDisco = prompt("Introduce la estanteria del disco.");
     let nuevoDisco = new Disco();
-    nuevoDisco.guardarDisco(nombreDisco,autorDisco,anyoDisco,generoDisco,localizacionDisco);
+    nuevoDisco.guardarDisco(nombreDisco, autorDisco, anyoDisco, generoDisco, localizacionDisco);
     console.log(nuevoDisco.mostrarDisco());
 
     let opcion = prompt("Donde desea introducirlo en la lista: " + '\n' +
@@ -254,27 +254,31 @@ function mostrarElemento(array, posicion) {
             }
         }
         alert("Elemento en la posicion " + posicion + ": " + '\n' +
-            elemento.mostrarDisco);
+            elemento.mostrarDisco());
     } else {
         alert("La posicion indicada se sale del array.")
     }
 }
 
-function mostrarPosicion(array, element) {
+function mostrarPosicion(array, nombreDisco) {
+    let disco = new Disco();
     for (i = 0; i < array.length; i++) {
-        if (array[i] == element) {
-            alert("La posición de " + element + " en el array es: " + (i + 1));
+        disco = array[i];
+        if (disco.nombre == nombreDisco) {
+            alert("La posición de " + nombreDisco + " en el array es: " + (i + 1));
         }
     }
 }
 
 function mostrarIntervalo(array, inicio, fin) {
+    let disco = new Disco();
     let start = inicio - 1;
     let end = fin - 1;
     if (start >= 0 && end < array.length) {
         let cadena = "Elementos del intervalo: " + '\n';
-        for (start; start <= end; start++) {
-            cadena += (start + 1) + ": " + array[start] + '\n';
+        for (i = start; i <= end; i++) {
+            disco = array[i]
+            cadena += (i + 1) + ": " + disco.mostrarDisco() + '\n';
         }
         alert(cadena);
     } else {
