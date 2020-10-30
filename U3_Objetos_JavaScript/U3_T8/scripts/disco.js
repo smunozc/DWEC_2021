@@ -25,14 +25,16 @@ function Disco() {
         this.prestado = esPrestado;
     }
 
-    this.toString = function () {
-        alert("Nombre del disco: " + this.nombre + "\n Autor: " + this.autor +
+    this.mostrarDisco = function () {
+        let resul = "Nombre del disco: " + this.nombre + "\n Autor: " + this.autor +
             "\n Año de publicación: " + this.anyoPublicacion + "\n Genero: " + this.tipoMusica +
-            "\n Numero de estanteria: " + this.localizacion + "\n Es prestado: " + this.prestado);
+            "\n Numero de estanteria: " + this.localizacion + "\n Es prestado: " + this.prestado;
+        
+        return resul;
     }
 }
 
-//PARTE ARRAYS
+//-----------------------------------------------PARTE ARRAYS-----------------------------------------------
 
 var discos = [];
 
@@ -144,34 +146,57 @@ function numElementos(array) {
 }
 
 function mostrarElementosArray(array) {
+    let disco = new Disco();
     let cadena = "Elementos del array: " + '\n';
     for (i = 0; i < array.length; i++) {
-        cadena += (i + 1) + ": " + array[i] + '\n';
+        disco = array[i];
+        cadena += (i + 1) + ": " + '\n' + disco.mostrarDisco() + '\n';
     }
-    console.log(cadena);
+    alert(cadena);
 
 }
 
 function mostrarElementosArrayInverso(array) {
+    let disco = new Disco();
     let cadena = "Elementos del array en orden invertido: " + '\n';
     for (i = array.length - 1; i >= 0; i--) {
-        cadena += (i + 1) + ": " + array[i] + '\n';
+        disco = array[i];
+        cadena += (i + 1) + ": " + '\n' + disco.mostrarDisco() + '\n';
     }
     alert(cadena);
 }
 
 function mostrarOrdenadoAlfabeticamente(array) {
+    let disco = new Disco();
+    let aux = new Disco();
     let arrayAlfabetico = [];
+    let arrayFinal = [];
+    let contador = 0;
     let cadena = "Elementos del array ordenados alfabeticamente: " + '\n';
 
+    //Ordenar nombres de discos
     for (i = 0; i < array.length; i++) {
-        arrayAlfabetico[i] = array[i];
+        disco = array[i];
+        arrayAlfabetico[i] = disco.nombre;
     }
 
     arrayAlfabetico.sort();
 
-    for (i = 0; i < array.length; i++) {
-        cadena += (i + 1) + ": " + arrayAlfabetico[i] + '\n';
+    //Meter objetos ordenados en nuevo array
+    while (contador < array.length) {
+        for(i=0;i<array.length;i++){
+            disco = array[i];
+            if(disco.nombre === arrayAlfabetico[contador]){
+                arrayFinal[contador] = disco;
+                contador++;
+            }
+        }
+    }
+
+    //Mostrar array ordenado alfabéticamente
+    for(i=0;i<arrayFinal.length;i++){
+        disco = arrayFinal[i];
+        cadena += (i + 1) + ": " + '\n' + disco.mostrarDisco() + '\n';
     }
     alert(cadena);
 }
@@ -182,7 +207,9 @@ function addNew(array) {
     let anyoDisco = prompt("Introduce el año de publicación del disco.");
     let generoDisco = prompt("Introduce el género del disco.");
     let localizacionDisco = prompt("Introduce la estanteria del disco.");
-    let nuevoDisco = new Disco(nombreDisco, autorDisco, anyoDisco, generoDisco, localizacionDisco);
+    let nuevoDisco = new Disco();
+    nuevoDisco.guardarDisco(nombreDisco,autorDisco,anyoDisco,generoDisco,localizacionDisco);
+    console.log(nuevoDisco.mostrarDisco());
 
     let opcion = prompt("Donde desea introducirlo en la lista: " + '\n' +
         "1. Añadir al principio" + '\n' +
@@ -219,7 +246,7 @@ function deleteElement(array) {
 
 function mostrarElemento(array, posicion) {
     let position = posicion - 1;
-    let elemento = "";
+    let elemento = new Disco();
     if (position >= 0 && position < array.length) {
         for (i = 0; i < array.length; i++) {
             if (i === position) {
@@ -227,7 +254,7 @@ function mostrarElemento(array, posicion) {
             }
         }
         alert("Elemento en la posicion " + posicion + ": " + '\n' +
-            elemento);
+            elemento.mostrarDisco);
     } else {
         alert("La posicion indicada se sale del array.")
     }
