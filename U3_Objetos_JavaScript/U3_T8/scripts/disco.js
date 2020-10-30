@@ -34,9 +34,17 @@ function Disco() {
     }
 }
 
+let disco1 = new Disco();
+disco1.guardarDisco("That's Life","Shawn James","2017","Cover",5);
+let disco2 = new Disco();
+disco2.guardarDisco("Hurt","Johnny Cash","2016","Cover",5);
+
 //-----------------------------------------------PARTE ARRAYS-----------------------------------------------
 
 var discos = [];
+
+discos[0] = disco1;
+discos[1] = disco2;
 
 do {
     var opcion = prompt("Elige una opción: " + '\n' +
@@ -62,7 +70,7 @@ do {
                     let opcion2 = prompt("Elige una opción: " + '\n' +
                         "1. Orden del array" + '\n' +
                         "2. Orden inverso" + '\n' +
-                        "3. Orden Alfabético") * 1;
+                        "3. Orden alfabético") * 1;
                     switch (opcion2) {
                         case 1:
                             mostrarElementosArray(discos);
@@ -107,8 +115,8 @@ do {
                             mostrarElemento(discos, posicion);
                             break;
                         case 2:
-                            let nombreDisco = prompt("Introduce el disco del que desee saber su posición: ");
-                            mostrarPosicion(discos, nombreDisco);
+                            let nombreDisco = prompt("Introduce el nombre disco que desee consultar: ");
+                            mostrarElementoNombre(discos, nombreDisco);
                             break;
                         default:
                             alert("Debe introducir un número de los que se indican.");
@@ -126,6 +134,7 @@ do {
 
 } while (opcion !== 0)
 
+//Funcion para saber si hay elementos en el array
 function hayElementos(array) {
     if (array.length > 0) {
         return true;
@@ -135,6 +144,7 @@ function hayElementos(array) {
     }
 }
 
+//Funcion para saber el número de elementos en el array
 function numElementos(array) {
     let contador = 0;
     for (i = 0; i < array.length; i++) {
@@ -144,6 +154,7 @@ function numElementos(array) {
     }
     alert("Numero de elementos en el array: " + contador);
 }
+
 
 function mostrarElementosArray(array) {
     let disco = new Disco();
@@ -168,7 +179,6 @@ function mostrarElementosArrayInverso(array) {
 
 function mostrarOrdenadoAlfabeticamente(array) {
     let disco = new Disco();
-    let aux = new Disco();
     let arrayAlfabetico = [];
     let arrayFinal = [];
     let contador = 0;
@@ -205,11 +215,28 @@ function addNew(array) {
     let nombreDisco = prompt("Introduce el nombre del disco.");
     let autorDisco = prompt("Introduce el autor del disco.");
     let anyoDisco = prompt("Introduce el año de publicación del disco.");
-    let generoDisco = prompt("Introduce el género del disco.");
+    let seleccionGenero = prompt("Introduce el género del disco.\n1.Rock\n2.Pop\n3.Funk\n4.Indie");
+    let generoDisco;
+    switch(seleccionGenero){
+        case 1:
+            generoDisco = "Rock";
+            break;
+        case 2:
+            generoDisco = "Pop";
+            break;
+        case 3:
+            generoDisco = "Funk";
+            break;
+        case 4:
+            generoDisco = "Indie";
+            break;
+        default:
+            generoDisco = "Rock";
+            alert("No se ha introducido un numero correcto, estableciendo valor por defecto 'Rock'");
+    }
     let localizacionDisco = prompt("Introduce la estanteria del disco.");
     let nuevoDisco = new Disco();
     nuevoDisco.guardarDisco(nombreDisco, autorDisco, anyoDisco, generoDisco, localizacionDisco);
-    console.log(nuevoDisco.mostrarDisco());
 
     let opcion = prompt("Donde desea introducirlo en la lista: " + '\n' +
         "1. Añadir al principio" + '\n' +
@@ -258,6 +285,17 @@ function mostrarElemento(array, posicion) {
     } else {
         alert("La posicion indicada se sale del array.")
     }
+}
+
+function mostrarElementoNombre(array, nombreDisco) {
+    let disco = new Disco();
+    
+    for (i = 0; i < array.length; i++) {
+        disco = array[i];
+        if (disco.nombre === nombreDisco) {
+            alert("\n Datos del disco seleccionado: \n" + disco.mostrarDisco());
+        }
+    }    
 }
 
 function mostrarPosicion(array, nombreDisco) {
