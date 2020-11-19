@@ -1,0 +1,16 @@
+table{
+    height: 500px;
+    width: 40%;
+    border-collapse: separate;
+    border-spacing: 10px 10px;
+}
+
+table tr td{
+    background-color: red;
+    text-align: center;
+}
+
+table tr td img{
+    visibility: hidden;
+    width: 90%;
+}

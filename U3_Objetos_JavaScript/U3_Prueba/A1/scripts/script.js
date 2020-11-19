@@ -26,17 +26,41 @@ function rellenarCarton(carton) {
 }
 
 function compruebaLinea(carton, lineaDesordenada) {
-    let linea1;
-    let linea2;
-    let linea3;
+    let contador = 0;
+    let linea = false;
 
     for (var i = 0; i < carton.length; i++){
+        contador = 0;
         for (var j = 0; j < carton[i].length; j++){
-            /*if(carton[i][j] !== lineaDesordenada[]){
-
-            }*/
+            if(carton[i][j] === lineaDesordenada[j]){
+                contador ++;
+            }
+            if(contador === 5){
+                linea = true;
+                console.log("LINEA!");
+                return j;
+            }
         }
     }
+
+    if(!linea){
+        return -1;
+    }
+}
+
+function compruebaBingo(carton, lineaDesordenada, numLineas){
+    let contador = 0;
+    let linea = false;
+    let bingo = false;
+
+    if(numLineas < 3){
+        
+    } else {
+        console.log("BINGO!!!!!");
+        bingo = true;
+    }
+
+    return bingo;
 }
 
 function sacaNumeroNuevo() {
