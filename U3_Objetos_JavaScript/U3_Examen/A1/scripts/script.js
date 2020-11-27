@@ -6,6 +6,8 @@ function Carta() {
         if ((palo >= 1 && palo <= 4) && (valor >= 1 && valor <= 10)) {
             this.palo = palo;
             this.valor = valor;
+        } else {
+            return null;
         }
     }
 
@@ -177,6 +179,10 @@ for (let i = 1; i <= 4; i++) {
         }
     }
 }
+
+//Carta que no se crea
+//carta2 = new Carta()
+//carta2.darValor(7,30);
 
 let barajaDiv = document.getElementById("baraja");
 barajaDiv.innerHTML = baraja1.toString();
