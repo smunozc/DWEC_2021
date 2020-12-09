@@ -1,4 +1,7 @@
 .errorInput{
+    border: 1px solid red;
+}
+
+.errorTag{
     color : red;
-    border: red;
 }
