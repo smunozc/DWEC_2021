@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen U4</title>
+    <style>
+        .incorrect {
+            border-color: red;
+            color: red;
+        }
+        .correct {
+            border-color: green;
+            color: green;
+        }
+    </style>
+    <script src="./scripts/script.js" defer></script>
+</head>
+<body>
+    <form id="formulario">
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" name="nombre" type="text">
+
+        <label for="anyo">Año:</label>
+        <input id="anyo" name="anyo" type="text">
+
+        <label for="habilidades">Habilidades:</label>
+        <input id="habilidades" name="habilidades" type="text">
+
+        <label for="tirada">Tirada:</label>
+        <input id="tirada" name="tirada" type="text">
+
+        <label for="rol">Rol:</label>
+        <select id="rol" name="rol">
+            <option autofocus value="0">Select one</option>
+            <option value="lider">Lider</option>
+            <option value="combate">Combate</option>
+            <option value="comunicaciones">Comunicaciones</option>
+            <option value="demoliciones">Demoliciones</option>
+            <option value="fanatico">Fanático</option>
+        </select>
+
+        <label for="password">Password:</label>
+        <input id="password" name="password" type="password">
+
+        <button id="reset" type="reset">reset</button>
+        <button id="submit" type="submit">submit</button>
+    </form>
+    <div id="errores"></div>
+    <div id="ultimaTirada"></div>
+</body>
+</html>
