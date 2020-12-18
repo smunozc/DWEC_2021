@@ -185,5 +185,6 @@ document.getElementById('label').addEventListener('click', () => {
 document.getElementById('imagen').addEventListener('click', () => {
 
     //WORK IN PROGRESS
+    console.log("Functionality not yet implemented");
 
 });
