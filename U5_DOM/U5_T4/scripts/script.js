@@ -157,8 +157,6 @@ document.getElementById('label').addEventListener('click', () => {
 
                 }
 
-
-
             } else {
 
                 let element = document.createElement('label');
