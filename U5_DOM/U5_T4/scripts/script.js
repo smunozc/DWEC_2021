@@ -134,8 +134,7 @@ document.getElementById('label').addEventListener('click', () => {
                 if (existentElement.previousElementSibling !== null) {
 
                     //Comprueba si el nodo hermano anterior es una etiqueta 'label'
-                    if (existentElement.previousElementSibling.tagName === 'label') {
-                        console.log(existentElement.previousElementSibling);
+                    if (existentElement.previousElementSibling.tagName.toLowerCase() === 'label') {
                         existentElement.previousElementSibling.innerHTML = content;
 
                     } else {
@@ -181,4 +180,12 @@ document.getElementById('label').addEventListener('click', () => {
         }
 
     }
+});
+
+
+//Evento click para el boton de textarea
+document.getElementById('imagen').addEventListener('click', () => {
+
+    //WORK IN PROGRESS
+
 });
