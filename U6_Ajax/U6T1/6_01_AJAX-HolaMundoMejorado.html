@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Hola mundo con AJAX mejorado</title>
+	</head>
+	<body>
+		<label for="texto">URL: </label>
+		<input name="texto" type="text" id="inputTexto" style="width:30%">
+		<button id="botonMostrar">Mostrar contenido</button>
+
+		<br><br>
+
+		<textarea id="areaTexto" style="width:70%; height: 300px;"></textarea>
+
+		<script>
+			let url = window.location.href;
+			let input = document.getElementById("inputTexto");
+			input.value = url;
+
+			document.getElementById("botonMostrar").addEventListener("click",()=>{
+				descargaArchivo();
+			})
+
+			let READY_STATE_UNINITIALIZED = 0;
+			let READY_STATE_LOADING = 1;
+			let READY_STATE_LOADED = 2;
+			let READY_STATE_INTERACTIVE = 3;
+			let READY_STATE_COMPLETE = 4;
+
+			let peticion_http;
+
+			function cargaContenido(url, metodo, funcion) {
+				peticion_http = inicializa_xhr();
+
+				if (peticion_http) {
+					peticion_http.onreadystatechange = funcion;
+					peticion_http.open(metodo, url, true);
+					peticion_http.send(null);
+				}
+			}
+
+			function inicializa_xhr() {
+				if (window.XMLHttpRequest) {
+					return new XMLHttpRequest();
+				} else if (window.ActiveXObject) {
+					return new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			}
+
+			function muestraContenido() {
+				if (peticion_http.readyState === READY_STATE_COMPLETE) {
+					if (peticion_http.status === 200) {
+						document.getElementById("areaTexto").innerHTML = peticion_http.responseText;
+					}
+				}
+			}
+
+			function descargaArchivo() {
+				cargaContenido(input.value, "GET", muestraContenido);
+			}
+		</script>
+	</body>
+</html>
