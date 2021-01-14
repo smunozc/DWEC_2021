@@ -24,8 +24,18 @@ function cargarAsync(url) {
   function estadoPeticion() {
     console.log(miXHR.readyState);
     if (miXHR.readyState == 4 && miXHR.status == 200) {
-      document.getElementById("indicador").innerHTML = "";
-      document.getElementById("resultado").innerHTML = miXHR.responseText;
+      if(miXHR.responseText === "SI"){
+        document.getElementById("indicador").innerHTML = "";
+        let resultado = document.getElementById("resultado");
+        resultado.innerHTML = miXHR.responseText;
+        resultado.style.color = "green";
+      } else {
+        document.getElementById("indicador").innerHTML = "";
+        let resultado = document.getElementById("resultado");
+        resultado.innerHTML = miXHR.responseText;
+        resultado.style.color = "red";
+      }
+      
     }
   }
 }
