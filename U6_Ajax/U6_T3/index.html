@@ -4,6 +4,15 @@
 <head>
   <meta charset="utf-8" />
   <style>
+    table{
+      text-align: center;
+      width: 80%;
+    }
+
+    #celdaImagen{
+      width: 20%;
+    }
+
     table,
     th,
     td {
@@ -53,7 +62,7 @@
 
     function cargarXML(xml) {
       let docXML = xml.responseXML;
-      let tabla;
+      let tabla = "<tr><th>Título</th><th>Cadena</th><th>Director</th><th>Año</th><th>Terminada</th></tr>";
       let series = docXML.getElementsByTagName("SERIE");
       for (let i = 0; i < series.length; i++) {
         tabla += "<tr><td><strong>";
@@ -72,26 +81,26 @@
 
         if (series[i].getElementsByTagName("ANO")[0].textContent < 2000) {
 
-          let year = series[i].getElementsByTagName("ANO")[0].setAttribute("class", rojo);
-          tabla += series[i].getElementsByTagName("ANO")[0].textContent;
+          let year = series[i].getElementsByTagName("ANO")[0].textContent;
+          tabla += "<p class='rojo'>" + year + "</p>";
 
         } else if (series[i].getElementsByTagName("ANO")[0].textContent >= 2001 && series[i].getElementsByTagName(
-            "ANO")[0].textContent <= 2010) {
+          "ANO")[0].textContent <= 2010) {
 
-          let year = series[i].getElementsByTagName("ANO")[0].setAttribute("class", amarillo);
-          tabla += series[i].getElementsByTagName("ANO")[0].textContent;
+          let year = series[i].getElementsByTagName("ANO")[0].textContent;
+          tabla += "<p class='amarillo'>" + year + "</p>";
 
         } else if (series[i].getElementsByTagName("ANO")[0].textContent > 2011) {
 
-          let year = series[i].getElementsByTagName("ANO")[0].setAttribute("class", verde);
-          tabla += series[i].getElementsByTagName("ANO")[0].textContent;
+          let year = series[i].getElementsByTagName("ANO")[0].textContent;
+          tabla += "<p class='verde'>" + year + "</p>";
 
         }
 
-        tabla += "</td><td>";
+        tabla += "</td><td id='celdaImagen'>";
 
         let src = determinarImagen(series[i].getElementsByTagName("TERMINADA")[0].textContent);
-        tabla += "<img src='" + src + "'>";
+        tabla += "<img src='" + src + "' style='width:100%;'>";
 
         tabla += "</img></td></tr>";
       }
