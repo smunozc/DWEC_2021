@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 5px;
+    }
+
+    .rojo {
+      color: red;
+    }
+
+    .amarillo {
+      color: yellow;
+    }
+
+    .verde {
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="texto">
+    <h1>Colección de CDs</h1>
+    <button id="cargaCatalogo">Carga catálogo</button>
+  </div>
+  <table id="demo"></table>
+
+  <script>
+    document.getElementById("cargaCatalogo").addEventListener("click", cargarCatalogo);
+
+    function cargarCatalogo() {
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          cargarXML(xhr);
+        }
+      };
+      xhr.open("GET", "series.xml", true);
+      xhr.send();
+    }
+
+    function cargarXML(xml) {
+      let docXML = xml.responseXML;
+      let tabla;
+      let series = docXML.getElementsByTagName("SERIE");
+      for (let i = 0; i < series.length; i++) {
+        tabla += "<tr><td><strong>";
+
+        tabla += series[i].getElementsByTagName("TITULO")[0].textContent;
+
+        tabla += "</strong></td><td>";
+
+        tabla += series[i].getElementsByTagName("CADENA")[0].textContent;
+
+        tabla += "</td><td><i>";
+
+        tabla += series[i].getElementsByTagName("DIRECTOR")[0].textContent;
+
+        tabla += "</i></td><td>";
+
+        if (series[i].getElementsByTagName("ANO")[0].textContent < 2000) {
+
+          let year = series[i].getElementsByTagName("ANO")[0].setAttribute("class", rojo);
+          tabla += series[i].getElementsByTagName("ANO")[0].textContent;
+
+        } else if (series[i].getElementsByTagName("ANO")[0].textContent >= 2001 && series[i].getElementsByTagName(
+            "ANO")[0].textContent <= 2010) {
+
+          let year = series[i].getElementsByTagName("ANO")[0].setAttribute("class", amarillo);
+          tabla += series[i].getElementsByTagName("ANO")[0].textContent;
+
+        } else if (series[i].getElementsByTagName("ANO")[0].textContent > 2011) {
+
+          let year = series[i].getElementsByTagName("ANO")[0].setAttribute("class", verde);
+          tabla += series[i].getElementsByTagName("ANO")[0].textContent;
+
+        }
+
+        tabla += "</td><td>";
+
+        let src = determinarImagen(series[i].getElementsByTagName("TERMINADA")[0].textContent);
+        tabla += "<img src='" + src + "'>";
+
+        tabla += "</img></td></tr>";
+      }
+      document.getElementById("demo").innerHTML = tabla;
+    }
+
+    function determinarImagen(estadoFinalizada) {
+      if (estadoFinalizada == "SI") {
+        return "./img/Si.jpg";
+      } else if (estadoFinalizada == "NO") {
+        return "./img/No.jpg";
+      }
+    }
+  </script>
+</body>
+
+</html>

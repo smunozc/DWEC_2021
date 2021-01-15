@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SERIES>
+  <SERIE>
+    <TITULO>The Witcher</TITULO>
+    <CADENA>Netflix</CADENA>
+    <DIRECTOR>Lauren Schmidt Hissrich</DIRECTOR> 
+    <ANO>2019</ANO>
+    <TERMINADA>NO</TERMINADA>
+  </SERIE>
+  <SERIE>
+    <TITULO>Sherlock</TITULO>
+    <CADENA>Netflix</CADENA>
+    <DIRECTOR>Paul McGuigan</DIRECTOR> 
+    <ANO>2010</ANO>
+    <TERMINADA>SI</TERMINADA>
+  </SERIE>
+  <SERIE>
+    <TITULO>Serie 3</TITULO>
+    <CADENA>Netflix</CADENA>
+    <DIRECTOR>Robertovitchnie</DIRECTOR> 
+    <ANO>1999</ANO>
+    <TERMINADA>SI</TERMINADA>
+  </SERIE>
+</SERIES>
