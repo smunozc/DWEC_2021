@@ -1,0 +1,87 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Ajax con PHP y JSON</title>
+    <script>
+        window.addEventListener("load", inicio);
+
+        function inicio() {
+            document.getElementById("mostrar").addEventListener("click", mostrar);
+        }
+
+        function mostrar() {
+            let inputTitulo = document.getElementById("titulo").value;
+            let inputDirector = document.getElementById("director").value;
+            let inputCadena = document.getElementById("cadena").value;
+            let inputAnyo = document.getElementById("anyo").value;
+            let inputTerminada = document.getElementById("terminada").checked;
+            
+            console.log(inputTerminada);
+
+
+            let objeto = {
+                titulo: inputTitulo,
+                director: inputDirector,
+                cadena: inputCadena,
+                anyo: parseInt(inputAnyo),
+                terminada: inputTerminada
+            };
+
+            let xhr = new XMLHttpRequest();
+            let txt = "";
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    
+                    console.log(xhr.responseText);
+                    txt = xhr.responseText;
+                    let divTexto = document.getElementById("texto");
+
+                    divTexto.innerHTML = txt;
+
+                    if(this.responseText === '"ok"') {
+                        divTexto.style.color = "green";
+                    } else {
+                        divTexto.style.color = "red";
+                    }
+
+                    document.getElementById("texto").innerHTML = txt;
+                }
+            };
+            let parametros = JSON.stringify(objeto);
+            /*xhr.open("GET", "6-09_AJAX-JSON-BBDD.php?objeto=" + parametros, true);
+                xhr.send();*/
+            xhr.open("POST", "conexionBD.php", true);
+            xhr.setRequestHeader(
+                "Content-type",
+                "application/x-www-form-urlencoded"
+            );
+            xhr.send("objeto=" + parametros);
+        }
+    </script>
+</head>
+
+<body>
+
+    <label for="titulo">Título: </label>
+    <input id="titulo" type="text" name="titulo">
+
+    <label for="director">Director: </label>
+    <input id="director" type="text" name="director">
+
+    <label for="cadena">Cadena: </label>
+    <input id="cadena" type="text" name="cadena">
+
+    <label for="anyo">Año: </label>
+    <input id="anyo" type="text" name="anyo">
+
+    <label for="terminada">Terminada: </label>
+    <input id="terminada" type="checkbox" name="terminada">
+
+    <input type="button" id="mostrar" value="mostrar">
+
+    <div id="texto"></div>
+
+</body>
+
+</html>
