@@ -1,0 +1,23 @@
+[
+    {
+      "TITULO": "Los soprano",
+      "CADENA": "HBO",
+      "DIRECTOR": "David Chase",
+      "ANO": "1999",
+      "TERMINADA": "SI"
+    },
+    {
+      "TITULO": "Hermanos de sangre",
+      "CADENA": "HBO",
+      "DIRECTOR": "Stephen Ambrose",
+      "ANO": "2001",
+      "TERMINADA": "SI"
+    },
+    {
+      "TITULO": "Fargo",
+      "CADENA": "FX",
+      "DIRECTOR": "Noah Hawley",
+      "ANO": "2014",
+      "TERMINADA": "NO"
+    }
+]

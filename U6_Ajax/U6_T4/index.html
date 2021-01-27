@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <style>
+    table{
+      text-align: center;
+      width: 80%;
+    }
+
+    #celdaImagen{
+      width: 20%;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 5px;
+    }
+
+    .rojo {
+      color: red;
+    }
+
+    .amarillo {
+      color: yellow;
+    }
+
+    .verde {
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="texto">
+    <h1>Colección de CDs</h1>
+    <button id="cargaCatalogo">Carga catálogo</button>
+  </div>
+  <table id="demo"></table>
+
+  <script>
+    document.getElementById("cargaCatalogo").addEventListener("click", cargarCatalogo);
+
+    function cargarCatalogo() {
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          console.log("Al menos entra aqui");
+          cargarJSON(xhr);
+        }
+      };
+      xhr.open("GET", "datosjson.php", true);
+      xhr.send();
+    }
+
+    function cargarJSON(xhr) {
+      let docJSON = JSON.parse(xhr.responseText);
+      let tabla = "<tr><th>Título</th><th>Cadena</th><th>Director</th><th>Año</th><th>Terminada</th></tr>";
+      let series = docJSON;
+      for (let i = 0; i < series.length; i++) {
+        tabla += "<tr><td><strong>";
+
+        tabla += series[i].TITULO;
+
+        tabla += "</strong></td><td>";
+
+        tabla += series[i].CADENA;
+
+        tabla += "</td><td><i>";
+
+        tabla += series[i].DIRECTOR;
+
+        tabla += "</i></td><td>";
+
+        if (series[i].ANO < 2001) {
+
+          let year = series[i].ANO;
+          tabla += "<p class='rojo'>" + year + "</p>";
+
+        } else if (series[i].ANO >= 2001 && series[i].ANO <= 2010) {
+
+          let year = series[i].ANO;
+          tabla += "<p class='amarillo'>" + year + "</p>";
+
+        } else if (series[i].ANO > 2011) {
+
+          let year = series[i].ANO;
+          tabla += "<p class='verde'>" + year + "</p>";
+
+        }
+
+        tabla += "</td><td id='celdaImagen'>";
+
+        let src = determinarImagen(series[i].TERMINADA);
+        tabla += "<img src='" + src + "' style='width:100%;'>";
+
+        tabla += "</img></td></tr>";
+      }
+      document.getElementById("demo").innerHTML = tabla;
+    }
+
+    function determinarImagen(estadoFinalizada) {
+      if (estadoFinalizada == "SI") {
+        return "./img/Si.jpg";
+      } else if (estadoFinalizada == "NO") {
+        return "./img/No.jpg";
+      }
+    }
+  </script>
+</body>
+
+</html>
