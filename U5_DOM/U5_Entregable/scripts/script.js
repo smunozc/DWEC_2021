@@ -1,5 +1,6 @@
 //Elementos del formulario
 
+let formulario = document.getElementById('formulario');
 let columns = document.getElementById('cols');
 let rows = document.getElementById('rows');
 let header = document.getElementById('hasHeader');
@@ -8,6 +9,32 @@ let borderWidth = document.getElementById('borderWidth');
 let borderColor = document.getElementById('borderColor');
 
 let boton = document.getElementById('send');
+
+//Generar inputs
+
+header.addEventListener('click', () => {
+
+    if (columns.value !== '') {
+
+        for (let i = 0; i < columns.value; i++) {
+            let label = document.createElement('label');
+            label.setAttribute('for', 'cabeceraCol' + i);
+            label.innerHTML = 'Cabecera Columna ' + i;
+
+            let input = document.createElement('input');
+            input.setAttribute('type', 'text');
+            input.setAttribute('name', 'cabeceraCol' + i);
+            input.setAttribute('id', 'cabeceraCol' + i);
+
+            formulario.appendChild(label);
+            formulario.appendChild(input);
+        }
+
+    } else {
+        console.log("El campo de columnas está vacio");
+    }
+
+});
 
 //Generar tabla en caso de que el usuario presione el boton de enviar
 
@@ -43,8 +70,12 @@ boton.addEventListener('click', () => {
                         header.style.border = borderWidth.value + 'px solid ' + borderColor.value;
                         row.appendChild(header);
 
-                        if (defaultText.value !== '') {
-                            header.innerHTML = defaultText.value;
+                        let contenidoTh = document.getElementById('cabeceraCol' + j);
+
+                        if (contenidoTh.value !== '') {
+                            header.innerHTML = contenidoTh.value;
+                        } else {
+                            header.innerHTML = "No establecido";
                         }
 
                     } else {
