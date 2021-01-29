@@ -13,23 +13,24 @@ let boton = document.getElementById('send');
 
 boton.addEventListener('click', () => {
 
-    let contenedor = document.createElement('div');
-    let barra1 = document.createElement('hr');
-    let barra2 = document.createElement('hr');
-    let tabla = document.createElement('table');
-    tabla.setAttribute('id', 'tabla');
-
-    document.body.appendChild(barra1);
-    document.body.appendChild(contenedor);
-    contenedor.appendChild(tabla);
-    document.body.appendChild(barra2);
-
-    if (borderWidth.value !== '') {
-        tabla.style.border = borderWidth.value + 'px solid ' + borderColor.value;
-        tabla.style.borderCollapse = 'collapse';
-    }
-
     if (columns.value !== '' && rows.value !== '' && borderWidth.value !== '') {
+
+        let contenedor = document.createElement('div');
+        let barra1 = document.createElement('hr');
+        let barra2 = document.createElement('hr');
+        let tabla = document.createElement('table');
+        tabla.setAttribute('id', 'tabla');
+
+        document.body.appendChild(barra1);
+        document.body.appendChild(contenedor);
+        contenedor.appendChild(tabla);
+        document.body.appendChild(barra2);
+
+        if (borderWidth.value !== '') {
+            tabla.style.border = borderWidth.value + 'px solid ' + borderColor.value;
+            tabla.style.borderCollapse = 'collapse';
+        }
+
         for (let i = 0; i < rows.value; i++) {
             let row = document.createElement('tr');
 
@@ -60,6 +61,8 @@ boton.addEventListener('click', () => {
             }
 
         }
+    } else {
+        console.log("Hay campos importantes vacios");
     }
 
 });
