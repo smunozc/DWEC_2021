@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entregable U5</title>
+    <script src="./scripts/script.js" defer></script>
+</head>
+<body>
+    <form>
+
+        <label for="cols">Cantidad de columnas</label>
+        <input type="text" name="cols" id="cols">
+
+        <label for="rows">Cantidad de filas</label>
+        <input type="text" name="rows" id="rows">
+
+        <label for="hasHeader">Tiene cabecera</label>
+        <input type="checkbox" name="hasHeader" id="hasHeader">
+
+        <label for="default">Valor por defecto</label>
+        <input type="text" name="default" id="default">
+
+        <label for="borderWidth">Grosor del borde</label>
+        <input type="text" name="borderWidth" id="borderWidth">
+
+        <label for="borderColor">Color del borde</label>
+        <select name="borderColor" id="borderColor">
+            <option default value="black">Negro</option>
+            <option value="blue">Azul</option>
+            <option value="red">Rojo</option>
+        </select>
+
+        <input type="button" value="Enviar" id="send">
+
+    </form>
+</body>
+</html>
