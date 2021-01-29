@@ -26,10 +26,8 @@ boton.addEventListener('click', () => {
         contenedor.appendChild(tabla);
         document.body.appendChild(barra2);
 
-        if (borderWidth.value !== '') {
-            tabla.style.border = borderWidth.value + 'px solid ' + borderColor.value;
-            tabla.style.borderCollapse = 'collapse';
-        }
+        tabla.style.border = borderWidth.value + 'px solid ' + borderColor.value;
+        tabla.style.borderCollapse = 'collapse';
 
         for (let i = 0; i < rows.value; i++) {
             let row = document.createElement('tr');
