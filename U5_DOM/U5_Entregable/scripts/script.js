@@ -15,7 +15,7 @@ boton.addEventListener('click', () => {
 
     if (columns.value !== '' && rows.value !== '' && borderWidth.value !== '') {
 
-        if (!isNAN(parseInt(columns.value)) && !isNAN(parseInt(rows.value)) && !isNAN(parseInt(borderWidth.value))) {
+        if (!isNaN(parseInt(columns.value)) && !isNaN(parseInt(rows.value)) && !isNaN(parseInt(borderWidth.value))) {
 
             let contenedor = document.createElement('div');
             let barra1 = document.createElement('hr');
