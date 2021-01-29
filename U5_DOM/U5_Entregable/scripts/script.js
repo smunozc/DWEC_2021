@@ -15,50 +15,57 @@ boton.addEventListener('click', () => {
 
     if (columns.value !== '' && rows.value !== '' && borderWidth.value !== '') {
 
-        let contenedor = document.createElement('div');
-        let barra1 = document.createElement('hr');
-        let barra2 = document.createElement('hr');
-        let tabla = document.createElement('table');
-        tabla.setAttribute('id', 'tabla');
+        if (!isNAN(parseInt(columns.value)) && !isNAN(parseInt(rows.value)) && !isNAN(parseInt(borderWidth.value))) {
 
-        document.body.appendChild(barra1);
-        document.body.appendChild(contenedor);
-        contenedor.appendChild(tabla);
-        document.body.appendChild(barra2);
+            let contenedor = document.createElement('div');
+            let barra1 = document.createElement('hr');
+            let barra2 = document.createElement('hr');
+            let tabla = document.createElement('table');
+            tabla.setAttribute('id', 'tabla');
 
-        tabla.style.border = borderWidth.value + 'px solid ' + borderColor.value;
-        tabla.style.borderCollapse = 'collapse';
+            document.body.appendChild(barra1);
+            document.body.appendChild(contenedor);
+            contenedor.appendChild(tabla);
+            document.body.appendChild(barra2);
 
-        for (let i = 0; i < rows.value; i++) {
-            let row = document.createElement('tr');
+            tabla.style.border = borderWidth.value + 'px solid ' + borderColor.value;
+            tabla.style.borderCollapse = 'collapse';
 
-            tabla.appendChild(row);
+            for (let i = 0; i < rows.value; i++) {
+                let row = document.createElement('tr');
 
-            for (let j = 0; j < columns.value; j++) {
-                if (i === 0 && header.checked) {
+                tabla.appendChild(row);
 
-                    let header = document.createElement('th');
-                    header.style.border = borderWidth.value + 'px solid ' + borderColor.value;
-                    row.appendChild(header);
+                for (let j = 0; j < columns.value; j++) {
+                    if (i === 0 && header.checked) {
 
-                    if (defaultText.value !== '') {
-                        header.innerHTML = defaultText.value;
+                        let header = document.createElement('th');
+                        header.style.border = borderWidth.value + 'px solid ' + borderColor.value;
+                        row.appendChild(header);
+
+                        if (defaultText.value !== '') {
+                            header.innerHTML = defaultText.value;
+                        }
+
+                    } else {
+
+                        let data = document.createElement('td');
+                        data.style.border = borderWidth.value + 'px solid ' + borderColor.value;
+                        row.appendChild(data);
+
+                        if (defaultText.value !== '') {
+                            data.innerHTML = defaultText.value;
+                        }
+
                     }
-
-                } else {
-
-                    let data = document.createElement('td');
-                    data.style.border = borderWidth.value + 'px solid ' + borderColor.value;
-                    row.appendChild(data);
-
-                    if (defaultText.value !== '') {
-                        data.innerHTML = defaultText.value;
-                    }
-
                 }
+
             }
 
+        } else {
+            console.log('Hay campos numericos con texto');
         }
+
     } else {
         console.log("Hay campos importantes vacios");
     }
