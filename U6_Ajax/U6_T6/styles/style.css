@@ -1,0 +1,33 @@
+table {
+    margin-top: 50px;
+    text-align: center;
+    width: 80%;
+}
+
+#celdaImagen {
+    width: 20%;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 5px;
+}
+
+.rojo {
+    color: red;
+}
+
+.amarillo {
+    color: yellow;
+}
+
+.verde {
+    color: green;
+}
