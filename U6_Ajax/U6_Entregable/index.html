@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entregable U6</title>
+    <script src="./XHR.js" defer></script>
+    <script src="./Fetch.js" defer></script>
+    <style>
+        table {
+            margin-top: 50px;
+            text-align: center;
+            width: 80%;
+        }
+
+        #celdaImagen {
+            width: 20%;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+
+        .rojo {
+            color: red;
+        }
+
+        .amarillo {
+            color: yellow;
+        }
+
+        .verde {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="texto">
+        <h1>Lista de Armas</h1>
+        <button id="cargaCatalogo">Carga lista XHR</button>
+        <button id="cargaCatalogoFetch">Carga lista Fetch</button>
+
+        <label for="selBando">Seleccionar Bando: </label>
+        <select name="selBando" id="selBando">
+            <option value="1">Aliados</option>
+            <option value="2">Eje</option>
+        </select>
+    </div>
+    <table id="tabla"></table>
+
+</body>
+
+</html>
