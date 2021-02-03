@@ -5,6 +5,7 @@ document.getElementById("cargaCatalogo").addEventListener("click", cargarCatalog
 
 function cargarCatalogo() {
     if (tabla.innerHTML === "") {
+        console.log('Haciendo petición xhr...');
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -15,6 +16,7 @@ function cargarCatalogo() {
         xhr.open("GET", "listar_armas.php", true);
         xhr.send();
     } else {
+        console.log('Ya se ha hecho una primera peticion, cargando json guardado...');
         cargarJSON(jsonArmas);
     }
 

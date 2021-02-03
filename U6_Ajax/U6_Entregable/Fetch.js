@@ -6,6 +6,7 @@ document.getElementById("cargaCatalogoFetch").addEventListener("click", mostrarA
 function mostrarArmas() {
 
     if(tabla.innerHTML === ""){
+        console.log('Haciendo petición fetch...');
 
         fetch('listar_armas.php')
         .then(response => response.json())
@@ -16,6 +17,7 @@ function mostrarArmas() {
         .catch(error => console.log("No se ha podido mostrar: " + error));
 
     } else {
+        console.log('Ya se ha hecho una primera peticion, cargando json guardado...');
         cargarJSON(jsonArmas);
     }
     
