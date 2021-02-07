@@ -1,58 +1,76 @@
 window.addEventListener("load", inicio);
 
-var jsonWeb;
+var jsonWeb = "";
+var table = document.getElementById("resultado");
+let state = document.getElementById("state");
 
-let ccaa = document.getElementById("select").value;
-let dosisAdministradas = document.getElementById("dosisAdministradas").value;
-let dosisEntregadas = document.getElementById("dosisEntregadas").value;
-let dosisPautaCompletada = document.getElementById("dosisPautaCompletada").value;
-let porcentajeEntregadas = document.getElementById("porcentajeEntregadas").value;
-let porcentajePoblacionAdministradas = document.getElementById("porcentajePoblacionAdministradas").value;
-let porcentajePoblacionCompletas = document.getElementById("porcentajePoblacionCompletas").value;
+let ccaa = document.getElementById("select");
+let dosisAdministradas = document.getElementById("dosisAdministradas");
+let dosisEntregadas = document.getElementById("dosisEntregadas");
+let dosisPautaCompletada = document.getElementById("dosisPautaCompletada");
+let porcentajeEntregadas = document.getElementById("porcentajeEntregadas");
+let porcentajePoblacionAdministradas = document.getElementById("porcentajePoblacionAdministradas");
+let porcentajePoblacionCompletas = document.getElementById("porcentajePoblacionCompletas");
 
 
 function inicio() {
-    obtenerDatosWeb();
     document.getElementById("modificar").addEventListener("click", enviarCambios);
 }
 
 function enviarCambios() {
 
-    let objeto = {
-        ccaa: ccaa,
-        dosisEntregadas: dosisEntregadas,
-        dosisAdministradas: dosisAdministradas,
-        dosisPautaCompletada: dosisPautaCompletada,
-        porcentajeEntregadas: porcentajeEntregadas,
-        porcentajePoblacionAdministradas: porcentajePoblacionAdministradas,
-        porcentajePoblacionCompletas: porcentajePoblacionCompletas
+    let json = {
+        "ccaa": ccaa.value,
+        "dosisEntregadas": dosisEntregadas.value,
+        "dosisAdministradas": dosisAdministradas.value,
+        "dosisPautaCompletada": dosisPautaCompletada.value,
+        "porcentajeEntregadas": porcentajeEntregadas.value,
+        "porcentajePoblacionAdministradas": porcentajePoblacionAdministradas.value,
+        "porcentajePoblacionCompletas": porcentajePoblacionCompletas.value
     };
 
-    fetch('actualizar_comunidad.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: objeto
-            // body: "objeto=" + JSON.stringify(objeto)
-        })
-        .then(response => response.json() /*ó function (response) {return response.json();*/ )
-        .then(result => {
-            cargarJSON(result);
-        })
-        .catch(error => console.log("Request failed: " + error));
-}
+    console.log(jsonWeb);
 
-function obtenerDatosWeb() {
-    fetch('https://covid-vacuna.app/data/latest.json')
-        .then(response => response.json())
-        .then(datos => {
-            jsonWeb = datos;
-            jsonWeb.pop();
-            construirFormulario(jsonWeb);
-        })
-        .catch(error => console.log("No se ha podido mostrar: " + error));
+    if (jsonWeb !== "") {
+        console.log("Enviados cambios de " + ccaa.value);
 
+        fetch('actualizar_comunidad.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(json)
+            })
+            .then(response => response.json() /*ó function (response) {return response.json();*/ )
+            .then(result => {
+
+                console.log(result);
+
+                for (let i = 0; i < jsonWeb.length; i++) {
+                    if(jsonWeb[i].ccaa === result.ccaa){
+                        jsonWeb[i].dosisEntregadas = result.dosisEntregadas;
+                        jsonWeb[i].dosisAdministradas = result.dosisAdministradas;
+                        jsonWeb[i].dosisPautaCompletada = result.dosisPautaCompletada;
+                        jsonWeb[i].porcentajeEntregadas = result.porcentajeEntregadas;
+                        jsonWeb[i].porcentajePoblacionAdministradas = result.porcentajePoblacionAdministradas;
+                        jsonWeb[i].porcentajePoblacionCompletas = result.porcentajePoblacionCompletas;
+                    }
+                }
+
+                if (table.innerHTML === "") {
+                    cargarJSON(jsonWeb);
+                } else {
+                    table.innerHTML = "";
+                    cargarJSON(jsonWeb);
+                }
+
+                state.innerHTML = "Tabla actualizada";
+
+            })
+            .catch(error => console.log("Request failed: " + error));
+    } else {
+        console.log("Aún no se han cargado datos de la Web en la BDD");
+    }
 
 }
 
@@ -69,17 +87,6 @@ function construirFormulario(json) {
         select.appendChild(option);
     }
 }
-
-// function obtenerDatosWeb() {
-//     fetch('https://covid-vacuna.app/data/latest.json')
-//         .then(response => response.json())
-//         .then(datos => {
-//             console.table(datos);
-//             cargarJSON(datos);
-//             //document.getElementById("resultado").innerHTML = JSON.stringify(datos);
-//         })
-//         .catch(error => console.log("No se ha podido mostrar: " + error));
-// }
 
 function cargarJSON(datos) {
 
@@ -152,14 +159,97 @@ function cargarJSON(datos) {
         tr.appendChild(td7);
 
     }
+
 }
 
 let botonXHR = document.getElementById("cargarXHR");
-botonXHR.addEventListener("click",()=>{
-
+botonXHR.addEventListener("click", () => {
+    insertarComunidadesXHR();
 });
 
 let botonFetch = document.getElementById("cargarFetch");
-botonFetch.addEventListener("click",()=>{
-    obtenerDatosWeb();
+botonFetch.addEventListener("click", () => {
+    insertarComunidadesFetch();
 });
+
+function insertarComunidadesFetch() {
+
+    fetch('https://covid-vacuna.app/data/latest.json')
+        .then(response => response.json())
+        .then(datos => {
+            jsonWeb = datos;
+            jsonWeb.pop();
+
+            fetch('insertar_comunidades.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(jsonWeb)
+                })
+                .then(response => response.json())
+                .then(result => {
+
+                    console.log(result);
+                    construirFormulario(result);
+
+                    if(table.innerHTML === ""){
+                        cargarJSON(result);
+                    } else {
+                        table.innerHTML = "";
+                        cargarJSON(result);
+                    }
+
+                    state.innerHTML = "Datos de la web descargados";
+
+                })
+                .catch(error => console.log("Request failed: " + error));
+
+        })
+        .catch(error => console.log("No se ha podido mostrar: " + error));
+
+}
+
+function insertarComunidadesXHR() {
+
+    let xhrGet = new XMLHttpRequest();
+    xhrGet.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+            jsonWeb = JSON.parse(this.responseText);
+            jsonWeb.pop();
+
+            let xhrPost = new XMLHttpRequest();
+            xhrPost.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    let result = JSON.parse(this.responseText);
+                    console.log(result);
+                    construirFormulario(result);
+                    
+                    if(table.innerHTML === ""){
+                        cargarJSON(result);
+                    } else {
+                        table.innerHTML = "";
+                        cargarJSON(result);
+                    }
+
+                    state.innerHTML = "Datos de la web descargados";
+
+                }
+            }
+
+            xhrPost.open("POST", "insertar_comunidades.php", true);
+            xhrPost.setRequestHeader(
+                "Content-type",
+                "application/x-www-form-urlencoded"
+            );
+            xhrPost.send(JSON.stringify(jsonWeb));
+
+        }
+    };
+
+    xhrGet.open("GET", "https://covid-vacuna.app/data/latest.json", true);
+    xhrGet.send();
+
+}
