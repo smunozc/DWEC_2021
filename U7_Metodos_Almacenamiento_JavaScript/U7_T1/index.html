@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U7_T1</title>
+    <script src="./scripts/script.js" defer></script>
+    <style>
+        .container {
+            display: flex;
+            width: 90%;
+        }
+
+        form {
+            width: 60%;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>EJEMPLO DE ALMACENAMIENTO LOCAL CON HTML5</h1>
+
+        <form>
+            <label for="areaAlmacenamiento">AREA DE ALMACENAMIENTO</label>
+            <select name="areaAlmacenamiento" id="areaAlmacenamiento">
+                <option value="local">LOCAL</option>
+                <option value="session">SESSION</option>
+            </select>
+
+            <div>
+                <label for="clave">CLAVE</label>
+                <input type="text" name="clave" id="clave">
+            </div>
+
+            <div>
+                <label for="valor">VALOR</label>
+                <input type="text" name="valor" id="valor">
+            </div>
+
+
+
+            <input type="button" value="GUARDAR" id="guardar">
+            <input type="button" value="ELIMINAR" id="eliminar">
+            <input type="button" value="REFRESCAR" id="refrescar">
+            <input type="button" value="COMPROBAR COMPATIBILIDAD DEL NAVEGADOR" id="compatibilidad">
+        </form>
+
+        <div>
+            <label for="local">CLAVES Y VALORES EN LOCAL STORAGE</label>
+            <textarea name="local" id="local" cols="30" rows="10"></textarea>
+        </div>
+
+        <div>
+            <label for="session">CLAVES Y VALORES EN SESSION STORAGE</label>
+            <textarea name="session" id="session" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+</body>
+
+</html>
