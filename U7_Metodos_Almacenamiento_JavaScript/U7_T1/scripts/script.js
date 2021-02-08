@@ -101,7 +101,6 @@ document.getElementById('refrescar').addEventListener('click', ()=>{
 });
 
 function refrescarAreas() {
-    console.log("refrescando areas...");
 
     textLocal.value = "";
 
