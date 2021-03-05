@@ -2,7 +2,7 @@ let jsonWeb = [];
 let selectCCAA = document.getElementById('selectCCAA');
 
 document.getElementById('cargarXHR').addEventListener('click', obtenerDatosXHR);
-document.getElementById('cargarFetch').addEventListener('click', obtenerDatosXHR); //Cambiar
+document.getElementById('cargarFetch').addEventListener('click', obtenerDatosFetch); //Cambiar
 selectCCAA.addEventListener('change', () => {
 
     // Este addEventListener escucha el cambio en el elemento select y pinta en la segunda tabla 
