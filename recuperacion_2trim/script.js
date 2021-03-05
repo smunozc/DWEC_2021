@@ -227,28 +227,25 @@ function cargarTabla(datos) {
     table.appendChild(trHeader);
 
     let th1 = document.createElement("th");
-    th1.innerHTML = "Id";
+    th1.innerHTML = "Title";
 
     let th2 = document.createElement("th");
-    th2.innerHTML = "Title";
+    th2.innerHTML = "Description";
 
     let th3 = document.createElement("th");
-    th3.innerHTML = "Description";
+    th3.innerHTML = "Director";
 
     let th4 = document.createElement("th");
-    th4.innerHTML = "Director";
+    th4.innerHTML = "Producer";
 
     let th5 = document.createElement("th");
-    th5.innerHTML = "Producer";
+    th5.innerHTML = "Release Date";
 
     let th6 = document.createElement("th");
-    th6.innerHTML = "Release Date";
+    th6.innerHTML = "Rt Score";
 
     let th7 = document.createElement("th");
-    th7.innerHTML = "Rt Score";
-
-    let th8 = document.createElement("th");
-    th8.innerHTML = "Button";
+    th7.innerHTML = "Button";
 
     trHeader.appendChild(th1);
     trHeader.appendChild(th2);
@@ -257,7 +254,6 @@ function cargarTabla(datos) {
     trHeader.appendChild(th5);
     trHeader.appendChild(th6);
     trHeader.appendChild(th7);
-    trHeader.appendChild(th8);
 
     for (let i = 0; i < datos.length; i++) {
 
@@ -265,27 +261,24 @@ function cargarTabla(datos) {
         table.appendChild(tr);
 
         let td1 = document.createElement("td");
-        td1.innerHTML = datos[i].id;
+        td1.innerHTML = datos[i].title;
 
         let td2 = document.createElement("td");
-        td2.innerHTML = datos[i].title;
+        td2.innerHTML = datos[i].description;
 
         let td3 = document.createElement("td");
-        td3.innerHTML = datos[i].description;
+        td3.innerHTML = datos[i].director;
 
         let td4 = document.createElement("td");
-        td4.innerHTML = datos[i].director;
+        td4.innerHTML = datos[i].producer;
 
         let td5 = document.createElement("td");
-        td5.innerHTML = datos[i].producer;
+        td5.innerHTML = datos[i].release_date;
 
         let td6 = document.createElement("td");
-        td6.innerHTML = datos[i].release_date;
+        td6.innerHTML = datos[i].rt_score;
 
         let td7 = document.createElement("td");
-        td7.innerHTML = datos[i].rt_score;
-
-        let td8 = document.createElement("td");
         let button = document.createElement("input");
         button.setAttribute("type", "button");
         button.setAttribute("value", "Personajes");
@@ -293,10 +286,10 @@ function cargarTabla(datos) {
         button.setAttribute("class", "buttonPersonaje");
 
         button.addEventListener('click', () => {
-            obtenerDatosPersonajesIdFilmFetch(td1.innerHTML);
+            obtenerDatosPersonajesIdFilmFetch(datos[i].id);
         });
 
-        td8.appendChild(button);
+        td7.appendChild(button);
 
         tr.appendChild(td1);
         tr.appendChild(td2);
@@ -305,7 +298,6 @@ function cargarTabla(datos) {
         tr.appendChild(td5);
         tr.appendChild(td6);
         tr.appendChild(td7);
-        tr.appendChild(td8);
 
     }
 
