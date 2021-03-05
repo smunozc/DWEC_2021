@@ -32,7 +32,6 @@ function enviarCambios() {
     console.log(jsonWeb);
 
     if (jsonWeb !== "") {
-        console.log("Enviados cambios de " + ccaa.value);
 
         fetch('actualizar_comunidad.php', {
                 method: 'POST',
@@ -43,6 +42,8 @@ function enviarCambios() {
             })
             .then(response => response.json() /*ó function (response) {return response.json();*/ )
             .then(result => {
+
+                console.log("Enviados cambios de " + ccaa.value);
 
                 console.log(result);
 
@@ -75,6 +76,10 @@ function enviarCambios() {
 }
 
 function construirFormulario(json) {
+    document.getElementById("select").innerHTML = "";
+
+    console.log("Contenido select: \n" + document.getElementById("select").innerHTML);
+
     let select = document.getElementById("select");
 
     for (let i = 0; i < json.length; i++) {
