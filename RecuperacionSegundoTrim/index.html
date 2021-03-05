@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperación Segundo Trimestre</title>
+    <script src="./script.js" defer></script>
+    <style>
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td, th{
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <input type="button" value="Obtener y guardar datos de films (XMLHttpRequest)" id="cargarXHR">
+    <input type="button" value="Obtener y guardar datos de films (Fetch)" id="cargarFetch">
+    <input type="button" value="Obtener y guardar personajes" id="cargarPersonajes">
+
+    <hr>
+
+    <div id="respuestas"></div>
+
+    <hr>
+
+    <h2>Tabla de peliculas</h2>
+
+    <table id="tablaPeliculas"></table>
+
+    <hr>
+
+    <h2>Tabla de personajes</h2>
+
+    <table id="tablaPersonajes"></table>
+
+</body>
+</html>
